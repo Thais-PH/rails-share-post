@@ -1,0 +1,22 @@
+<%= render "shared/navbar" %>
+<h1><%= @article.title %></h1>
+<p><%= @article.content %></p>
+<p><%= link_to 'Retour à la liste des articles', articles_path %></p>
+
+<h2>Commentaires</h2>
+<ul>
+  <% @comments.each do |comment| %>
+    <li><%= comment.content %> par <%= comment.user.username %></li>
+  <% end %>
+</ul>
+
+<h3>Ajouter un commentaire</h3>
+<%= form_with model: [@article, @comment], local: true do |form| %>
+  <div>
+    <%= form.label :content %><br />
+    <%= form.text_area :content %>
+  </div>
+  <div>
+    <%= form.submit 'Commenter' %>
+  </div>
+<% end %>

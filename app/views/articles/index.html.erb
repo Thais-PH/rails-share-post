@@ -1,0 +1,11 @@
+<%= render "shared/navbar" %>
+<h1>Liste des Articles</h1>
+<%= link_to 'Créer un nouvel article', new_article_path %>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article_path(article) %>
+    </li>
+  <% end %>
+</ul>
